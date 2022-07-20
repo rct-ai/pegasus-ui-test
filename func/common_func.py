@@ -1,4 +1,4 @@
-
+import random
 
 class commonFunc():
 
@@ -7,10 +7,7 @@ class commonFunc():
         baseUrl = 'https://pegasus-admin-test.rct.ai'
         return baseUrl
 
-'''
-    def testUser(self):
-        """测试账户"""
-        username = 'pegasus@rct.ai'
-        password = 'pegasus123456'
-        return username,password
-'''
+    def testText(self):
+        """测试文案"""
+        text = random.sample('abcdefghijklmnopqrstuvwxyz',6)
+        return str(text)

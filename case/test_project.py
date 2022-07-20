@@ -4,7 +4,6 @@ from seldom import Seldom, testdata, depend
 from pages.project_page import ProjectPage
 from func.common_func import commonFunc
 
-
 class ProjectTest(seldom.TestCase):
     global page
     page = ProjectPage(Seldom.driver)
@@ -13,8 +12,9 @@ class ProjectTest(seldom.TestCase):
         """初始化"""
         page.open(commonFunc.baseUrl(self) + ProjectPage.project_url)
         self.max_window()
+        self.wait(1)
 
-    def end(self):
+    def end_class(self):
         """退出测试"""
         self.quit()
 
@@ -22,9 +22,10 @@ class ProjectTest(seldom.TestCase):
         """取消新增项目"""
         page.project_add.click()
         self.assertText('项目描述')
-        text = testdata.get_word()
+        text = commonFunc.testText(self)
         page.project_name.input(text=text)
         page.cancel_add.click()
+        self.wait(1)
         self.assertNotText(text)
 
     def test02(self):
@@ -32,17 +33,19 @@ class ProjectTest(seldom.TestCase):
         page.project_add.click()
         self.assertText('项目描述')
         global pname,pid
-        pname = testdata.get_word()
+        pname = commonFunc.testText(self)
         page.project_name.input(text=pname)
         page.add_sure.click()
+        self.wait(1)
         self.assertText(pname)
         pid = page.project_id.text[6:]
 
     def test03(self):
         """重置搜索"""
-        text = testdata.get_word()
+        text = commonFunc.testText(self)
         page.project_search_input.input(text=text)
         page.project_reset.click()
+        self.wait(1)
         self.assertNotText(text)
 
     @depend("test02")
@@ -73,23 +76,28 @@ class ProjectTest(seldom.TestCase):
         page.page_input.clear()
         page.page_input.input(text='2')
         page.project_id.click()
+        self.wait(1)
         self.assertEqual(page.page_num.text,'2')
 
     @depend("test02")
     def test08(self):
         """下一页"""
         page.next_page.click()
+        self.wait(1)
         self.assertNotText(pname)
 
     @depend("test02")
     def test09(self):
         """上一页"""
         page.last_page.click()
+        self.wait(1)
         self.assertText(pname)
 
     def test10(self):
         """切换每页x条"""
         page.select_dropdown.click()
+        self.wait(1)
         self.assertText('12条/页')
         page.select_list.click()
+        self.wait(1)
         self.assertNotText('6条/页')
