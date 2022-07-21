@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import seldom
 from seldom import Seldom, testdata, depend
-from pages.project_page import ProjectPage
+from page.project_page import ProjectPage
 from func.common_func import commonFunc
 
 class ProjectTest(seldom.TestCase):

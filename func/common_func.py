@@ -10,4 +10,4 @@ class commonFunc():
     def testText(self):
         """测试文案"""
         text = random.sample('abcdefghijklmnopqrstuvwxyz',6)
-        return str(text)
+        return ''.join(text)
