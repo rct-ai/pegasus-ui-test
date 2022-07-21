@@ -3,7 +3,7 @@ import seldom
 from seldom import Seldom
 
 from func.common_func import commonFunc
-from pages.project_page import ProjectPage
+from page.project_page import ProjectPage
 
 class testSSO(seldom.TestCase):
     def start(self):

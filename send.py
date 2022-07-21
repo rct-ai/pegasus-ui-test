@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
+import os
 import requests
 import json
 
 def testReport():
+    path = os.getcwd() + '/reports'
+    name = os.listdir(path)
+    print(type(name),name)
+    fileName = list(filter(lambda a:a.find("result") >= 0,name))
+    print(fileName)
+    #return ''.join(fileName)
+
     p = {
     "msg_type": "interactive",
     "card": {
@@ -17,7 +25,7 @@ def testReport():
                                 "content": "点击查看测试报告 🔍",
                                 "tag": "lark_md"
                         },
-                        "url": "https://jenkins.dev-metaverse.fun/view/test/",
+                        "url": "https://jenkins.dev-metaverse.fun/view/test/job/test-pegasus-ui-automation/HTML_20Report/",
                         "type": "default",
                         "value": {}
                 }],
@@ -25,7 +33,7 @@ def testReport():
         }],
         "header": {
                 "title": {
-                        "content": "🔔 Pegasus管理后台回归测试",
+                        "content": "🔔 Pegasus管理后台UI自动化回归测试",
                         "tag": "plain_text"
                 }
         }
