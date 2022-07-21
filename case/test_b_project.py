@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import seldom
-from seldom import Seldom, testdata, depend
+from seldom import Seldom, depend
 from page.project_page import ProjectPage
 from func.common_func import commonFunc
 
@@ -14,9 +14,13 @@ class ProjectTest(seldom.TestCase):
         self.max_window()
         self.wait(1)
 
-    def end_class(self):
+    def down(self):
         """退出测试"""
         self.quit()
+
+    @classmethod
+    def setUpClass(cls):
+        cls().start()
 
     def test01(self):
         """取消新增项目"""

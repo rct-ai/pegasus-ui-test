@@ -48,3 +48,6 @@ class ProjectPage(Page):
 
     #项目id
     project_id = Element(xpath='//div[@class="el-card is-hover-shadow list-item border mb-4"]/div/div/div[2]')
+
+    #x个node
+    x_node = Element(xpath='//div[@class="el-card__body"]/div/div/a')
