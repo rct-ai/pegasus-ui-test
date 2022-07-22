@@ -11,11 +11,15 @@ class testSSO(seldom.TestCase):
         page = ProjectPage(Seldom.driver)
         page.open(commonFunc.baseUrl(self) + ProjectPage.project_url)
         self.max_window()
+        self.wait(1)
 
     def down(self):
-        """关闭浏览器"""
+        """退出测试"""
         self.quit()
-        self.close()
+
+    @classmethod
+    def setUpClass(cls):
+        cls().start()
 
     def test01(self):
         """sso登录"""
